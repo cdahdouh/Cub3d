@@ -1,4 +1,4 @@
-
+MLX= ../minilibx-linux
 
 INC=%%%%
 
@@ -6,7 +6,7 @@ INCLIB=$(INC)/../lib
 
 CC=clang
 
-CFLAGS= -I$(INC) -O3 -I../minilibx-linux
+CFLAGS= -I$(INC) -O3 -I$(MLX)
 
 SRC = find_wall_dist_horiz.c find_wall_dist_vert.c raycasting.c math_ft.c \
 	  ft_mapping.c mlx_ft.c ray_orient.c
@@ -26,7 +26,7 @@ $(NAME1)	:$(OBJ_MAIN1) $(OBJ)
 	$(CC) -o $(NAME1) $(OBJ_MAIN1) $(OBJ) -lm -lmlx -lX11 -lXext
 
 $(TESTFUN_NAME)	:$(OBJ) $(OBJ_TESTFUN)
-	$(CC) -o $(TESTFUN_NAME) $(OBJ_TESTFUN) $(OBJ) -L../minilibx-linux/ -L. -lmlx -lXext -lX11 -lm
+	$(CC) -o $(TESTFUN_NAME) $(OBJ_TESTFUN) $(OBJ) -L$(MLX) -L. -lmlx -lXext -lX11 -lm
 
 clean		:
 	rm -f $(NAME1) $(TESTFUN_NAME) *.o *~ 
